@@ -15,12 +15,12 @@ public class OrderTable {
 //    private List<CartItem> items;
 
     private String address;
-    private String status; // Например, "В обработке", "Отправлен", "Доставлен"
+    private OrderStatus status; // Например, "В обработке", "Отправлен", "Доставлен"
 
     // Конструкторы, геттеры и сеттеры
     public OrderTable() {}
 
-    public OrderTable(List<CartItem> items, String address, String status) {
+    public OrderTable(List<CartItem> items, String address, OrderStatus status) {
         this.address = address;
         this.status = status;
     }
@@ -43,11 +43,11 @@ public class OrderTable {
         this.address = address;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
     // Standard getters and setters

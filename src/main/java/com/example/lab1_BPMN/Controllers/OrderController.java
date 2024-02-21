@@ -1,6 +1,7 @@
 package com.example.lab1_BPMN.Controllers;
 
 import com.example.lab1_BPMN.Entities.CartItem;
+import com.example.lab1_BPMN.Entities.OrderStatus;
 import com.example.lab1_BPMN.Entities.OrderTable;
 import com.example.lab1_BPMN.Services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,7 @@ public class OrderController {
 
 
     @PutMapping("/{id}/status")
-    public OrderTable updateOrderStatus(@PathVariable Long id, @RequestBody Map<String, String> request) {
-        String status = request.get("status");
+    public OrderTable updateOrderStatus(@PathVariable Long id, @RequestBody OrderStatus status) {
         return orderService.updateOrderStatus(id, status);
     }
 
@@ -46,6 +46,11 @@ public class OrderController {
     @GetMapping("/{id}")
     public OrderTable getOrderById(@PathVariable Long id) {
         return orderService.getOrderById(id);
+    }
+
+    @GetMapping("/{id}/status")
+    public OrderStatus getStatus(@PathVariable Long id) {
+        return orderService.getStatus(id);
     }
 
     @GetMapping

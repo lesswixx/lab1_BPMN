@@ -47,6 +47,4 @@ public class Product {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-    // Standard getters and setters
 }

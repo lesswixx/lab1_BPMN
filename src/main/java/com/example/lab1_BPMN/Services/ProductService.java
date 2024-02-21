@@ -4,6 +4,8 @@ import com.example.lab1_BPMN.Entities.Product;
 import com.example.lab1_BPMN.Ex.ResourceNotFoundException;
 import com.example.lab1_BPMN.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +31,9 @@ public class ProductService {
 
     public Product createProduct(Product product) {
         return productRepository.save(product);
+    }
+
+    public Page<Product> getAll(int offset, int limit) {
+        return productRepository.findAll(PageRequest.of(offset, limit));
     }
 }

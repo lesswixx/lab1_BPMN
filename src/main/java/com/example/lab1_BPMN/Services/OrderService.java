@@ -1,6 +1,7 @@
 package com.example.lab1_BPMN.Services;
 
 import com.example.lab1_BPMN.Entities.CartItem;
+import com.example.lab1_BPMN.Entities.OrderStatus;
 import com.example.lab1_BPMN.Entities.OrderTable;
 import com.example.lab1_BPMN.Entities.Product;
 import com.example.lab1_BPMN.Ex.ResourceNotFoundException;
@@ -35,12 +36,12 @@ public class OrderService {
     }
 
     public OrderTable createOrder(List<CartItem> cartItems, String address) {
-        OrderTable order = new OrderTable(cartItems , address , "В обработке");
+        OrderTable order = new OrderTable(cartItems , address , OrderStatus.NEW);
 
         return orderRepository.save(order);
     }
 
-    public OrderTable updateOrderStatus(Long orderId, String newStatus) {
+    public OrderTable updateOrderStatus(Long orderId, OrderStatus newStatus) {
         OrderTable order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + orderId));
 
@@ -51,6 +52,10 @@ public class OrderService {
     public OrderTable getOrderById(Long orderId) {
         return orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + orderId));
+    }
+
+    public OrderStatus getStatus(Long id) {
+        return getOrderById(id).getStatus();
     }
 
     public List<OrderTable> getAllOrders() {
