@@ -1,5 +1,6 @@
 package com.example.lab1_BPMN.Controllers;
 
+import com.example.lab1_BPMN.Controllers.dto.NewStatus;
 import com.example.lab1_BPMN.Entities.CartItem;
 import com.example.lab1_BPMN.Entities.OrderStatus;
 import com.example.lab1_BPMN.Entities.OrderTable;
@@ -38,8 +39,8 @@ public class OrderController {
 
 
     @PutMapping("/{id}/status")
-    public OrderTable updateOrderStatus(@PathVariable Long id, @RequestBody OrderStatus status) {
-        return orderService.updateOrderStatus(id, status);
+    public OrderTable updateOrderStatus(@PathVariable Long id, @RequestBody NewStatus status) {
+        return orderService.updateOrderStatus(id, status.getNewStatus());
     }
 
 
