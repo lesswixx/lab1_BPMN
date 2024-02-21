@@ -11,8 +11,8 @@ public class OrderTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "orderTable")
-    private List<CartItem> items;
+//    @OneToMany(mappedBy = "orderTable")
+//    private List<CartItem> items;
 
     private String address;
     private String status; // Например, "В обработке", "Отправлен", "Доставлен"
@@ -21,7 +21,6 @@ public class OrderTable {
     public OrderTable() {}
 
     public OrderTable(List<CartItem> items, String address, String status) {
-        this.items = items;
         this.address = address;
         this.status = status;
     }
@@ -34,13 +33,7 @@ public class OrderTable {
         this.id = id;
     }
 
-    public List<CartItem> getItems() {
-        return items;
-    }
 
-    public void setItems(List<CartItem> items) {
-        this.items = items;
-    }
 
     public String getAddress() {
         return address;

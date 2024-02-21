@@ -35,10 +35,8 @@ public class OrderService {
     }
 
     public OrderTable createOrder(List<CartItem> cartItems, String address) {
-        OrderTable order = new OrderTable();
-        order.setItems(cartItems);
-        order.setAddress(address);
-        order.setStatus("В обработке");
+        OrderTable order = new OrderTable(cartItems , address , "В обработке");
+
         return orderRepository.save(order);
     }
 

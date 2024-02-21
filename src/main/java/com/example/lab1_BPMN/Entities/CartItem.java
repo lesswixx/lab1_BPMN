@@ -12,9 +12,6 @@ public class CartItem {
 
     private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "order_table_id", nullable = false)
-    private OrderTable orderTable;
 
     // Конструкторы, геттеры и сеттеры
     public CartItem() {}
@@ -22,7 +19,7 @@ public class CartItem {
     public CartItem( Product product, int quantity, OrderTable orderTable) {
         this.product = product;
         this.quantity = quantity;
-        this.orderTable = orderTable;
+
     }
 
     public Long getId() {
@@ -49,12 +46,5 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public OrderTable getOrderTable() {
-        return orderTable;
-    }
 
-    public void setOrderTable(OrderTable orderTable) {
-        this.orderTable = orderTable;
-    }
-    // Standard getters and setters
 }
