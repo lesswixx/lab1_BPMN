@@ -6,6 +6,7 @@ import com.example.lab1_BPMN.Entities.OrderStatus;
 import com.example.lab1_BPMN.Entities.OrderTable;
 import com.example.lab1_BPMN.Services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,8 +55,15 @@ public class OrderController {
         return orderService.getStatus(id);
     }
 
-    @GetMapping
+    @GetMapping("/paginated")
+    public Page<OrderTable> getAll(@RequestParam int offset, @RequestParam int limit) {
+        return orderService.getAll(offset, limit);
+    }
+
+
+    @GetMapping("/allOrders")
     public List<OrderTable> getAllOrders() {
         return orderService.getAllOrders();
     }
+
 }
